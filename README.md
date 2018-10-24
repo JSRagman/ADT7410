@@ -10,4 +10,4 @@ and not changed during operation.
 
 Exceptions to this include the T-Low, T-High, T-Crit, and Hysteresis setpoints.
 ## Status
-In development, nearing completion.
+In development, nearing completion. Christmas is also coming soon. Better get that shopping done.
