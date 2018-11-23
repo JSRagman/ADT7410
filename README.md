@@ -11,5 +11,4 @@ and not changed during operation.
 Exceptions to this include the T-Low, T-High, T-Crit, and Hysteresis setpoints.
 ## Status
 * In development, nearing completion.
-* Consider writing this for an 8-bit mcu linked to an I2C display.
 * Christmas is coming soon. Better get that shopping done.
