@@ -19,8 +19,8 @@
 // Operating Constants
 // -------------------------
 #define ADT7410_CONV_TIME    240   // 240 ms conversion time (auto)
-#define ADT7410_HIGH_LIMIT   150
-#define ADT7410_LOW_LIMIT    -55   // Device temperature limits (in deg C)
+#define ADT7410_RANGE_HIGH   150   // Device temperature limits (in deg C)
+#define ADT7410_RANGE_LOW    -55
 #define ADT7410_RESET        0x2F  // Reset to POD
 #define ADT7410_RESET_DELAY  220   // Reset time, in microseconds
 
@@ -33,6 +33,12 @@
 #define ADT7410_I2C1  0x49    // A1 = 0, A0 = 1
 #define ADT7410_I2C2  0x4A    // A1 = 1, A0 = 0
 #define ADT7410_I2C3  0x4B    // A1 = 1, A0 = 1
+
+
+// ADT7410 Register Power-On Default Values
+// ----------------------------------------
+#define ADT7410_STATUS_POD  0x80    // 0b_1000_0000
+#define ADT7410_CONFIG_POD  0x00    // 0b_0000_0000
 
 
 // ADT7410 Register Addresses
@@ -58,42 +64,50 @@
 
 // Configuration (Register 0x03)
 // ---------------------------------------------------
-// Functions:
-//     1. Switch between 13-bit and 16-bit resolution.
-//     2. Set the operation mode.
-//     3. Switch between comparator and interrupt modes on the
-//        INT and CT pins.
-//     4. Set the active polarity of the INT and CT pins.
-//     5. Set the number of faults required to activate the
+// Use one configuration option from each of the six categories.
+//     1. Resolution.
+//     2. Operation mode.
+//     3. Mode for the INT and CT pins.
+//     4. Active polarity of the CT pin.
+//     5. Active polarity of the INT pin.
+//     6. Number of consecutive faults required to activate the
 //        INT and CT pins.
 
 // 1. Temperature Resolution
-#define ADT7410_RES_13    0x00  // 13-bit resolution
-#define ADT7410_RES_16    0x80  // 16-bit resolution
+#define ADT7410_RESOLUTION_POD   0x00  // power-on default
+#define ADT7410_RESOLUTION_13    0x00  // 13-bit resolution
+#define ADT7410_RESOLUTION_16    0x80  // 16-bit resolution
 
 // 2. Operation Mode
-#define ADT7410_MODE_NORM 0x00  // continuous conversion
-#define ADT7410_MODE_ONCE 0x20  // one-shot
-#define ADT7410_MODE_SPS  0x40  // 1 SPS
-#define ADT7410_MODE_SD   0x60  // shutdown
+#define ADT7410_OPMODE_POD   0x00  // power-on default
+#define ADT7410_OPMODE_NORM  0x00  // continuous conversion
+#define ADT7410_OPMODE_1SHOT 0x20  // one-shot
+#define ADT7410_OPMODE_1SPS  0x40  // 1 SPS
+#define ADT7410_OPMODE_SD    0x60  // shutdown
 
 // 3. Comparator or Interrupt Mode for the INT and CT Pins
-#define ADT7410_INTERRUPT   0x00
-#define ADT7410_COMPARATOR  0x10
+#define ADT7410_FAULTMODE_POD         0x00  // power-on default
+#define ADT7410_FAULTMODE_INTERRUPT   0x00
+#define ADT7410_FAULTMODE_COMPARATOR  0x10
 
-// 4. Active Polarity for the INT and CT Pins
-#define ADT7410_CT_LOW    0x00  //  CT pin active low
-#define ADT7410_CT_HIGH   0x04  //  CT pin active high
-#define ADT7410_INT_LOW   0x00  // INT pin active low
-#define ADT7410_INT_HIGH  0x08  // INT pin active high
+// 4. Active Polarity for the CT Pin
+#define ADT7410_CT_ACTIVE_POD    0x00  //  power-on default
+#define ADT7410_CT_ACTIVE_LOW    0x00  //  CT pin active low
+#define ADT7410_CT_ACTIVE_HIGH   0x04  //  CT pin active high
 
-// 5. Fault Count - Determines the number of consecutive
+// 5. Active Polarity for the INT Pin
+#define ADT7410_INT_ACTIVE_POD   0x00  //  power-on default
+#define ADT7410_INT_ACTIVE_LOW   0x00  // INT pin active low
+#define ADT7410_INT_ACTIVE_HIGH  0x08  // INT pin active high
+
+// 6. Fault Count - Determines the number of consecutive
 //        under/over temperature readings allowed before
 //        activating the INT and CT pins.
-#define ADT7410_FAULT_1   0x00
-#define ADT7410_FAULT_2   0x01
-#define ADT7410_FAULT_3   0x02
-#define ADT7410_FAULT_4   0x03
+#define ADT7410_FAULTQUEUE_POD 0x00  // power-on default
+#define ADT7410_FAULTQUEUE_1   0x00
+#define ADT7410_FAULTQUEUE_2   0x01
+#define ADT7410_FAULTQUEUE_3   0x02
+#define ADT7410_FAULTQUEUE_4   0x03
 
 
 
