@@ -20,7 +20,6 @@
 #include "bbb-i2c.hpp"
 
 
-
 namespace ad_adt7410
 {
 
@@ -38,7 +37,6 @@ enum OpMode { normal=0x00, oneshot=0x20, sps=0x40, shutdown=0x60 };
 class ADT7410
 {
   protected:
-
 	bbbi2c::I2CBus* i2cbus;
 	uint8_t i2caddr;
 
@@ -47,7 +45,6 @@ class ADT7410
 	void  SetLimit ( uint8_t regaddr, double t_limit );
 
   public:
-
 	 ADT7410 ( bbbi2c::I2CBus* bus, uint8_t addr );
 	~ADT7410 ();
 
@@ -69,6 +66,5 @@ class ADT7410
 };
 
 } // namespace ad_adt7410
-
 
 #endif /* ADT7410_HPP_ */
