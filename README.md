@@ -10,4 +10,4 @@ and not changed during operation.
 
 Exceptions to this include the T-Low, T-High, T-Crit, and Hysteresis setpoints.
 ## Status
-* Written, in testing.
+* Not tested
