@@ -10,5 +10,5 @@ and not changed during operation.
 
 Exceptions to this include the T-Low, T-High, T-Crit, and Hysteresis setpoints.
 ## Status
-* In development
+* In development - tempus rerum imperator.
 * Not tested
